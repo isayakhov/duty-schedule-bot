@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "duty_schedule_bot"
+version = "0.1.0"
+description = ""
+authors = ["Ilya Sayakhov <isayakhov@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+apscheduler = "^3.6.3"
+python-telegram-bot = "^12.6.1"
+redis = "^3.4.1"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.790"
+pre-commit = "^1.16"
+pylint = "^2.3"
+pytest = "^6.2.2"
+pytest-cov = "^2.11.1"
+pytest-env = "^0.6.2"
+pytest-faker = "^2.0.0"
+pytest-mock = "^3.5.1"
+pytest-factoryboy = "^2.1.0"
+
+[tool.black]
+line-length = 119
+
+[tool.isort]
+line_length = 119
+multi_line_output = 3
+default_section = "THIRDPARTY"
+known_first_party = "app"
+sections = "FUTURE,STDLIB,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
+forced_separate = "tests"
+skip_glob = "**/migrations/*.py"
+
+[build-system]
+requires = ["poetry>=1.0.0"]
+build-backend = "poetry.masonry.api"

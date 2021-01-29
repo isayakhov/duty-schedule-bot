@@ -1,0 +1,65 @@
+name: Linters And Tests
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      redis:
+        image: redis:alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Set up python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install Poetry
+        uses: snok/install-poetry@v1.1.1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v2
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+      - name: Install dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root
+      - name: Install library
+        run: poetry install --no-interaction
+      - name: Install pre-commit
+        run: |
+          source .venv/bin/activate
+          pip install pre-commit
+          pre-commit install
+      - name: Run Linters
+        run: |
+          source .venv/bin/activate
+          pre-commit run --all-files
+      - name: Run tests
+        run: |
+          source .venv/bin/activate
+          pytest
+          coverage report
+        env:
+          REDIS_HOST: localhost
+          REDIS_PORT: 6379
+      - name: Upload coverage
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.xml
+          fail_ci_if_error: true
