@@ -3,7 +3,8 @@ import logging
 from app.common import exceptions
 from app.common import handlers as common_handlers
 from app.common.constants import HELP_ADD_TEXT, HELP_NO_SCHEDULE_TEXT, HELP_REMOVE_TEXT, HELP_START_TEXT
-from app.config import PLATFORM
+
+from .constants import PLATFORM
 
 logger = logging.getLogger(__name__)
 

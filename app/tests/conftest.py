@@ -3,6 +3,7 @@
 from unittest import mock
 
 import pytest
+from fastapi.testclient import TestClient
 
 from app.common import cache
 
@@ -35,4 +36,17 @@ def tg_context(username):
 
 @pytest.fixture
 def tg_bot():
+    return mock.MagicMock(get_chat=mock.MagicMock())
+
+
+@pytest.fixture
+def requests_post():
     return mock.MagicMock()
+
+
+@pytest.fixture
+def slack_web_client():
+    # pylint: disable=import-outside-toplevel
+    from app.slack.run_bot import app
+
+    return TestClient(app)

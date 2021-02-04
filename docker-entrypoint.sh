@@ -7,13 +7,21 @@ case "$1" in
         echo "  > bot: Run bot"
         echo "  > scheduler: Run scheduler for cron tasks"
         ;;
-    "bot")
+    "tg-bot")
         echo "Running bot ..."
         python -m app.telegram.run_bot
         ;;
-    "scheduler")
+    "tg-scheduler")
         echo "Running scheduler"
         python -m app.telegram.run_scheduler
+        ;;
+    "slack-bot")
+        echo "Running bot ..."
+        python -m app.slack.run_bot
+        ;;
+    "slack-scheduler")
+        echo "Running scheduler"
+        python -m app.slack.run_scheduler
         ;;
     "")
         echo "No run parameter passed please use one of: [bot, scheduler, help]"

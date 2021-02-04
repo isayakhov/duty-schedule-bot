@@ -2,7 +2,7 @@ from unittest import mock
 
 from app.common import constants, exceptions
 from app.common import handlers as common_handlers
-from app.config import PLATFORM
+from app.telegram.constants import PLATFORM
 from app.telegram.handlers import add_person, create_schedule, error, remove_person, show_schedule, start
 
 
