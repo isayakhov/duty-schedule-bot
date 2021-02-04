@@ -7,7 +7,7 @@ from app.config import DAYS_OF_DUTY
 
 from . import exceptions
 from .cache import cache
-from .constants import EVENING_REMINDER, MORNING_REMINDER, PERSON_ADDED, PERSON_REMOVED, WEEK_SCHEDULE
+from .constants import PERSON_ADDED, PERSON_REMOVED, REMINDER_MAP, WEEK_SCHEDULE
 
 logger = logging.getLogger(__name__)
 
@@ -97,8 +97,6 @@ def remind(platform: str, chat_id: str, tomorrow: bool) -> Optional[str]:
 
     when_in_days = int(tomorrow)
 
-    msg_map = {0: MORNING_REMINDER, 1: EVENING_REMINDER}
-
     idx = (_get_today() + timedelta(days=when_in_days)).weekday()
     if idx > DAYS_OF_DUTY - 1:
         return None
@@ -109,4 +107,4 @@ def remind(platform: str, chat_id: str, tomorrow: bool) -> Optional[str]:
 
     logger.info("Finished to remind schedule for chat_id: %s", chat_id)
 
-    return msg_map[when_in_days].format(username=schedule[idx])
+    return REMINDER_MAP[when_in_days].format(username=schedule[idx])

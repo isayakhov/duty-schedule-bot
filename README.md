@@ -16,22 +16,42 @@ you can share this role (Duty guy) between team members to help them to better f
 
 ## How to run it?
 
-1. First you need to create your own bot in telegram and add it to your group
-2. Next you need to pass to environment variables your bot's token into `TELEGRAM_TOKEN` variable
-3. The last part is to type: `docker-compose up`
-4. That's all :)
+1. First you need to create your own bot in Telegram / Slack and add it to your group
+2. Next you need to pass to environment variables your bot's token into `TELEGRAM_TOKEN` / `SLACK_TOKEN` variable
+   - For the Slack you also need to configure a public domain with SSL
+   - You also need to configure slash commands on your Slack Applications page
+3. Choose `docker-compose.yml` file for you (slack or telegram) and build it
+4. The last part is to type: `docker-compose up`
+5. Application runs two independent processes for periodic tasks and for bot interaction
+6. That's all :)
+
+## How to contribute?
+
+1. Type: `pip install pre-commit && pre-commit install`
+2. Make and commit your changes
+3. Open Pull request
+4. Push your changes
 
 ## Environment variables
 
+### Common
+
 |Name     | Required | Default | Description|
 |:--------|:-------- |:------- |:-----------|
-| REDIS_HOST        | - | redis    | Redis host address        |
-| REDIS_PORT        | - | 6379     | Redis port number         |
-| REDIS_DB          | - | 0        | Redis database number     |
-| TELEGRAM_TOKEN    | - | -        | Telegram bot token        |
-| DAYS_OF_DUTY      |   | 5        | Total duty days           |
-| PLATFORM          | - | telegram | Platform (for the future) |
+| REDIS_HOST        | - | redis    | Redis host address                |
+| REDIS_PORT        | - | 6379     | Redis port number                 |
+| REDIS_DB          | - | 0        | Redis database number             |
+| DAYS_OF_DUTY      |   | 5        | Total duty days                   |
 
-## Future plans
+### Telegram
 
-* Add Slack support
+|Name     | Required | Default | Description|
+|:--------|:-------- |:------- |:-----------|
+| TELEGRAM_TOKEN |   | "" | Telegram bot token |
+
+### Slack
+
+|Name     | Required | Default | Description|
+|:--------|:-------- |:------- |:-----------|
+| SLACK_TOKEN |   | ""                                         | Slack bot token         |
+| SLACK_URL   |   | https://slack.com/api/chat.postMessage     | Slack POST requests URL |

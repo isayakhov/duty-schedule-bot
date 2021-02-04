@@ -3,6 +3,8 @@ WEEK_SCHEDULE = "Duty schedule for the next week:\n\n{schedule}"
 MORNING_REMINDER = "Good morning, {username}! Today you are on duty. Have a nice day :)"
 EVENING_REMINDER = "Good evening, {username}! Tomorrow you will be on duty. Good luck :)"
 
+REMINDER_MAP = {0: MORNING_REMINDER, 1: EVENING_REMINDER}
+
 PERSON_ADDED = "User {username} was successfully added to schedule"
 PERSON_REMOVED = "User {username} was removed from schedule"
 
