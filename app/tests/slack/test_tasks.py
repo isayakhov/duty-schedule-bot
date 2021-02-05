@@ -17,6 +17,7 @@ def test_set_schedule(mocker, requests_post, chat_id, username):
 
 def test_remind(mocker, requests_post, chat_id, username):
     mocker.patch("app.slack.tasks.requests.post", requests_post)
+    mocker.patch("app.common.handlers._get_today", return_value=datetime(year=2021, month=1, day=27))
 
     common_handlers.add_person(PLATFORM, chat_id, username)
     common_handlers.set_schedule(PLATFORM, chat_id)
