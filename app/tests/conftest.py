@@ -36,7 +36,10 @@ def tg_context(username):
 
 @pytest.fixture
 def tg_bot():
-    return mock.MagicMock(get_chat=mock.MagicMock())
+    # bot.get_chat(chat_id).send_message()
+    return mock.MagicMock(
+        get_chat=mock.MagicMock(return_value=mock.MagicMock(send_message=mock.MagicMock(return_value=None)))
+    )
 
 
 @pytest.fixture

@@ -29,8 +29,8 @@ you can share this role (Duty guy) between team members to help them to better f
 
 1. Type: `pip install pre-commit && pre-commit install`
 2. Make and commit your changes
-3. Open Pull request
-4. Push your changes
+3. Push your changes
+4. Open Pull request
 
 ## Environment variables
 
