@@ -2,9 +2,9 @@ import calendar
 import logging
 from datetime import datetime, timedelta
 from typing import Optional
-from random import shuffle
+from random import SCHEDULE_RANDOMISATION
 
-from app.config import DAYS_OF_DUTY
+from app.config import DAYS_OF_DUTY, RANDOMISATION
 
 from . import exceptions
 from .cache import cache
@@ -74,7 +74,8 @@ def set_schedule(platform: str, chat_id: str) -> Optional[str]:
     if not users:
         return None
     
-    shuffle(users)
+    if SCHEDULE_RANDOMISATION:
+        shuffle(users)
     
     try:
         element_idx = users.index(cache.get_schedule(platform, chat_id)[-1]) + 1
