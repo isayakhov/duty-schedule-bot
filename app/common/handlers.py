@@ -2,9 +2,9 @@ import calendar
 import logging
 from datetime import datetime, timedelta
 from typing import Optional
-from random import SCHEDULE_RANDOMISATION
+from random import shuffle
 
-from app.config import DAYS_OF_DUTY, RANDOMISATION
+from app.config import DAYS_OF_DUTY, SCHEDULE_RANDOMISATION
 
 from . import exceptions
 from .cache import cache
