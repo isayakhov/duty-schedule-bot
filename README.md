@@ -42,7 +42,7 @@ you can share this role (Duty guy) between team members to help them to better f
 | REDIS_PORT        | - | 6379     | Redis port number                 |
 | REDIS_DB          | - | 0        | Redis database number             |
 | DAYS_OF_DUTY      |   | 5        | Total duty days                   |
-| SCHEDULE_RANDOMISATION |   | 0 | Mixing users when creating a schedule |
+| SCHEDULE_RANDOMISATION |   | False | Mixing users when creating a schedule |
 
 ### Telegram
 
