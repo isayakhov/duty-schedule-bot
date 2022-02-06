@@ -2,8 +2,8 @@
 
 [![build](https://github.com/isayakhov/duty-schedule-bot/workflows/Linters%20And%20Tests/badge.svg)](https://github.com/isayakhov/duty-schedule-bot/blob/main/.github/workflows/lint-and-tests.yml)
 [![codecov](https://codecov.io/gh/isayakhov/duty-schedule-bot/branch/main/graph/badge.svg?token=7DVLEWCKQR)](https://codecov.io/gh/isayakhov/duty-schedule-bot)
-[![code_quality](https://www.code-inspector.com/project/18495/status/svg)](https://frontend.code-inspector.com/public/project/18495/duty-schedule-bot/dashboard)
-[![code_score](https://www.code-inspector.com/project/18495/score/svg)](https://frontend.code-inspector.com/public/project/18495/duty-schedule-bot/dashboard)
+[![code_quality](https://api.codiga.io/project/18495/score/svg)](https://app.codiga.io/project/18495/dashboard)
+[![code_score](https://api.codiga.io/project/18495/status/svg)](https://app.codiga.io/project/18495/dashboard)
 
 ## What is this?
 
