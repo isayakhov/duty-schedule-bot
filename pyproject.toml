@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "duty_schedule_bot"
-version = "0.2.0"
+version = "0.2.1"
 description = ""
 authors = ["Ilya Sayakhov <isayakhov@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-apscheduler = "^3.6.3"
+python = "^3.10.0"
+apscheduler = "=3.7.0"
 redis = "^3.4.1"
 python-telegram-bot = {version = "^12.6.1", optional = true}
 requests = {version = "^2.25.1", optional = true}
@@ -24,6 +24,7 @@ pytest-env = "^0.6.2"
 pytest-faker = "^2.0.0"
 pytest-mock = "^3.5.1"
 pytest-factoryboy = "^2.1.0"
+isort = "^5.10.1"
 
 [tool.poetry.extras]
 telegram = ["python-telegram-bot"]

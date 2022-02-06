@@ -1,4 +1,4 @@
-FROM python:3.8-alpine
+FROM python:3.10-alpine
 
 ARG APP_HOME="/app"
 ARG APP_USER="appuser"
@@ -6,8 +6,9 @@ ARG PLATFORM
 
 RUN apk add --no-cache --virtual builds-deps build-base \
     && apk --no-cache --update add curl git libssl1.1 python3-dev \
-                                   musl-dev libffi-dev libressl-dev openssl-dev \
-    && pip install pip==19.1.1 \
+                                   musl-dev libffi-dev libressl-dev \
+                                   openssl-dev cargo \
+    && pip install pip==22.0.3 \
     && pip install cython \
     && apk del builds-deps build-base \
     && addgroup -S appgroup && adduser -S ${APP_USER} -G appgroup
